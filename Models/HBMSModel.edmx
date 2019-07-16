@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HBMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookingDetails180625">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Booked_From" Type="date" />
+          <Property Name="Booked_To" Type="date" />
+          <Property Name="No_of_Adults" Type="int" />
+          <Property Name="No_of_Children" Type="int" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Hotels180625">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="10" />
+          <Property Name="HotelName" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="25" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Avg_Rate_Per_Night" Type="int" />
+          <Property Name="PhoneNo1" Type="varchar" MaxLength="10" />
+          <Property Name="PhoneNo2" Type="varchar" MaxLength="10" />
+          <Property Name="Rating" Type="varchar" MaxLength="4" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="RoomDetails180625">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="HotelID" Type="int" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="RoomNo" Type="varchar" MaxLength="3" />
+          <Property Name="RoomType" Type="varchar" MaxLength="20" />
+          <Property Name="Per_Night_Rate" Type="int" />
+          <Property Name="Availability" Type="bit" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Users180625">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="7" />
+          <Property Name="Role" Type="varchar" MaxLength="10" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_BookingDetails180625_RoomDetails180625">
+          <End Role="RoomDetails180625" Type="Self.RoomDetails180625" Multiplicity="0..1" />
+          <End Role="BookingDetails180625" Type="Self.BookingDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetails180625">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="BookingDetails180625">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails180625_Users180625">
+          <End Role="Users180625" Type="Self.Users180625" Multiplicity="0..1" />
+          <End Role="BookingDetails180625" Type="Self.BookingDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users180625">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BookingDetails180625">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomDetails180625_Hotels180625">
+          <End Role="Hotels180625" Type="Self.Hotels180625" Multiplicity="0..1" />
+          <End Role="RoomDetails180625" Type="Self.RoomDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels180625">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="RoomDetails180625">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HBMSModelStoreContainer">
+          <EntitySet Name="BookingDetails180625" EntityType="Self.BookingDetails180625" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels180625" EntityType="Self.Hotels180625" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomDetails180625" EntityType="Self.RoomDetails180625" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users180625" EntityType="Self.Users180625" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BookingDetails180625_RoomDetails180625" Association="Self.FK_BookingDetails180625_RoomDetails180625">
+            <End Role="RoomDetails180625" EntitySet="RoomDetails180625" />
+            <End Role="BookingDetails180625" EntitySet="BookingDetails180625" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails180625_Users180625" Association="Self.FK_BookingDetails180625_Users180625">
+            <End Role="Users180625" EntitySet="Users180625" />
+            <End Role="BookingDetails180625" EntitySet="BookingDetails180625" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomDetails180625_Hotels180625" Association="Self.FK_RoomDetails180625_Hotels180625">
+            <End Role="Hotels180625" EntitySet="Hotels180625" />
+            <End Role="RoomDetails180625" EntitySet="RoomDetails180625" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HBMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookingDetails180625">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Booked_From" Type="DateTime" Precision="0" />
+          <Property Name="Booked_To" Type="DateTime" Precision="0" />
+          <Property Name="No_of_Adults" Type="Int32" />
+          <Property Name="No_of_Children" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <NavigationProperty Name="RoomDetails180625" Relationship="Self.FK_BookingDetails180625_RoomDetails180625" FromRole="BookingDetails180625" ToRole="RoomDetails180625" />
+          <NavigationProperty Name="Users180625" Relationship="Self.FK_BookingDetails180625_Users180625" FromRole="BookingDetails180625" ToRole="Users180625" />
+        </EntityType>
+        <EntityType Name="Hotels180625">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HotelName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Avg_Rate_Per_Night" Type="Int32" />
+          <Property Name="PhoneNo1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoomDetails180625" Relationship="Self.FK_RoomDetails180625_Hotels180625" FromRole="Hotels180625" ToRole="RoomDetails180625" />
+        </EntityType>
+        <EntityType Name="RoomDetails180625">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Per_Night_Rate" Type="Int32" />
+          <Property Name="Availability" Type="Boolean" />
+          <Property Name="Photo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookingDetails180625" Relationship="Self.FK_BookingDetails180625_RoomDetails180625" FromRole="RoomDetails180625" ToRole="BookingDetails180625" />
+          <NavigationProperty Name="Hotels180625" Relationship="Self.FK_RoomDetails180625_Hotels180625" FromRole="RoomDetails180625" ToRole="Hotels180625" />
+        </EntityType>
+        <EntityType Name="Users180625">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BookingDetails180625" Relationship="Self.FK_BookingDetails180625_Users180625" FromRole="Users180625" ToRole="BookingDetails180625" />
+        </EntityType>
+        <Association Name="FK_BookingDetails180625_RoomDetails180625">
+          <End Role="RoomDetails180625" Type="Self.RoomDetails180625" Multiplicity="0..1" />
+          <End Role="BookingDetails180625" Type="Self.BookingDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetails180625">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="BookingDetails180625">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails180625_Users180625">
+          <End Role="Users180625" Type="Self.Users180625" Multiplicity="0..1" />
+          <End Role="BookingDetails180625" Type="Self.BookingDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users180625">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BookingDetails180625">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomDetails180625_Hotels180625">
+          <End Role="Hotels180625" Type="Self.Hotels180625" Multiplicity="0..1" />
+          <End Role="RoomDetails180625" Type="Self.RoomDetails180625" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels180625">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="RoomDetails180625">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookingDetails180625" EntityType="Self.BookingDetails180625" />
+          <EntitySet Name="Hotels180625" EntityType="Self.Hotels180625" />
+          <EntitySet Name="RoomDetails180625" EntityType="Self.RoomDetails180625" />
+          <EntitySet Name="Users180625" EntityType="Self.Users180625" />
+          <AssociationSet Name="FK_BookingDetails180625_RoomDetails180625" Association="Self.FK_BookingDetails180625_RoomDetails180625">
+            <End Role="RoomDetails180625" EntitySet="RoomDetails180625" />
+            <End Role="BookingDetails180625" EntitySet="BookingDetails180625" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails180625_Users180625" Association="Self.FK_BookingDetails180625_Users180625">
+            <End Role="Users180625" EntitySet="Users180625" />
+            <End Role="BookingDetails180625" EntitySet="BookingDetails180625" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomDetails180625_Hotels180625" Association="Self.FK_RoomDetails180625_Hotels180625">
+            <End Role="Hotels180625" EntitySet="Hotels180625" />
+            <End Role="RoomDetails180625" EntitySet="RoomDetails180625" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HBMSModelStoreContainer" CdmEntityContainer="HotelsEntities">
+          <EntitySetMapping Name="BookingDetails180625">
+            <EntityTypeMapping TypeName="HBMSModel.BookingDetails180625">
+              <MappingFragment StoreEntitySet="BookingDetails180625">
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Booked_From" ColumnName="Booked_From" />
+                <ScalarProperty Name="Booked_To" ColumnName="Booked_To" />
+                <ScalarProperty Name="No_of_Adults" ColumnName="No_of_Adults" />
+                <ScalarProperty Name="No_of_Children" ColumnName="No_of_Children" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels180625">
+            <EntityTypeMapping TypeName="HBMSModel.Hotels180625">
+              <MappingFragment StoreEntitySet="Hotels180625">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Avg_Rate_Per_Night" ColumnName="Avg_Rate_Per_Night" />
+                <ScalarProperty Name="PhoneNo1" ColumnName="PhoneNo1" />
+                <ScalarProperty Name="PhoneNo2" ColumnName="PhoneNo2" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomDetails180625">
+            <EntityTypeMapping TypeName="HBMSModel.RoomDetails180625">
+              <MappingFragment StoreEntitySet="RoomDetails180625">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Per_Night_Rate" ColumnName="Per_Night_Rate" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users180625">
+            <EntityTypeMapping TypeName="HBMSModel.Users180625">
+              <MappingFragment StoreEntitySet="Users180625">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

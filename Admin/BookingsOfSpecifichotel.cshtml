@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HBMS.Models.BookingDetails180625>
+
+@{
+    ViewBag.Title = "BookingsOfSpecifichotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br />
+
+
+<h2><b>Bookings Of Specific Hotel</b></h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table  style="background-color:darkolivegreen"class="table">
+    <tr style="background-color:darkseagreen">
+        <th>
+            @Html.DisplayNameFor(model => model.Booked_From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Booked_To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.No_of_Adults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.No_of_Children)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users180625.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomDetails180625.RoomNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomDetails180625.Hotels180625.HotelName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Booked_From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Booked_To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_of_Adults)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_of_Children)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users180625.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomDetails180625.RoomNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomDetails180625.Hotels180625.HotelName)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.BookingID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.BookingID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.BookingID })
+                </td>*@
+        </tr>
+    }
+
+</table>

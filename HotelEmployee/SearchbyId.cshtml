@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HBMS.Models.RoomDetails180625>
+
+@{
+    ViewBag.Title = "SearchbyId";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br />
+<h2>Searched Hotel Room</h2>
+
+
+<table style="background-color:lightcyan" class="table">
+    <tr style="background-color:darkturquoise">
+        <th>
+            @Html.DisplayNameFor(model => model.RoomNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Per_Night_Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Availability)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Hotels180625.City)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Per_Night_Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Availability)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotels180625.City)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoomID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
+        </td>*@
+    </tr>
+}
+
+</table>

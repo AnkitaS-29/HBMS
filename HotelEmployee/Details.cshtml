@@ -1,0 +1,75 @@
+﻿@model HBMS.Models.BookingDetails180625
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookingDetails180625</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Booked_From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booked_From)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Booked_To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booked_To)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_of_Adults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_of_Adults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_of_Children)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_of_Children)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomDetails180625.RoomNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomDetails180625.RoomNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users180625.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users180625.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

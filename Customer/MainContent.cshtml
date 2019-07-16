@@ -1,0 +1,62 @@
+﻿@model HBMS.Models.BookingDetails180625
+
+@{
+    ViewBag.Title = "MainContent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<br>
+<h2 style="text-align:center;background-color:salmon">Hotels</h2>
+<br>
+<br />
+@using (Html.BeginForm("SearchbyId", "Customer", FormMethod.Get))
+{
+    <b>Enter Id to Search</b>
+    @Html.TextBox("id")
+    <input type="submit" name="btnsubmit" value="Search" class="btn-info" />
+}
+
+<br>
+<br />
+
+<div style="background-color:darkcyan">
+    <div class="col-sm-2">
+
+        <a href="/HotelEmployee/BookHotel">
+            <b style="color:red">JW Marriott Jaipur Resort</b>
+            <img src="~/images/JWMarriott.jpg" width="400" height="320" />
+        </a>
+    </div>
+    <br>
+    <br />
+
+    <div class="col-md-offset-6">
+        <a href="/HotelEmployee/BookHotel">
+            <b style="color:red;">Radisson</b>
+            <img src="~/images/Radisson.jpg" width="400" height="320" />
+        </a>
+    </div>
+    <br>
+    <br />
+
+    <div class="col-sm-2">
+
+        <a href="/HotelEmployee/BookHotel">
+            <b style="color:red">OberoiRajvilas</b>
+            <img src="~/images/OberoiRajvilas.jpg" width="400" height="320" />
+        </a>
+    </div>
+
+    <div class="col-md-offset-6">
+        <a href="/HotelEmployee/BookHotel">
+            <b style="color:red">ITC Rajputana</b>
+            <img src="~/images/ITC.jpg" width="500" height="320" />
+        </a>
+    </div>
+</div>
+
+
+

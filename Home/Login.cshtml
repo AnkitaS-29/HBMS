@@ -1,0 +1,56 @@
+﻿@model HBMS.Models.Users180625
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
+@*<h2>Login</h2>*@
+<section id="Login">
+
+    <div class="container">
+
+    </div>
+
+
+    <div class="container">
+        <div class="container contact-info">
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="Login-form">
+                        <h3>LOGIN</h3>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <div style="background-color:lightskyblue">
+
+
+                        <form id="main-Login-form" name="Login-form" method="post" action="#">
+                            <div class="form-group">
+                                USERNAME:<input type="text" name="UserName"  class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                PASSWORD:<input type="password" name="Password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div  class="form-group" >
+
+        
+        </div>
+                            @*<div class="form-group">
+            ROLE:
+            @Html.DropDownListFor(model=>model.Role,new List<SelectListItem>{
+           new SelectListItem() {Text="Admin",Value="Admin" },
+           new SelectListItem() {Text="Customer",Value="Customer"},
+           new SelectListItem() {Text="Hotel Employee",Value="Hotel Employee"} },"Please select your specified Role")
+            @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+        </div>*@
+                            <a href="/Home/Register">New User Register Here!!</a>
+                            <button type="submit" class="btn btn-primary" onclick="location.href='@Url.Action("Login","Home")'">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section><!--/#bottom-->

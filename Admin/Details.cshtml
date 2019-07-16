@@ -1,0 +1,90 @@
+﻿@model IEnumerable<HBMS.Models.Hotels180625>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<h2><b>Details</b></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table-bordered table-responsive" style="background-color:yellow">
+    <tr style="background-color:orangered">
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avg_Rate_Per_Night)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNo2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avg_Rate_Per_Night)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HotelID }) 
+            @Html.ActionLink("Details", "Details", new { id=item.HotelID }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.HotelID })
+        </td>
+    </tr>
+}
+
+</table>
